@@ -14,11 +14,18 @@ function renderTodo(){
     todoList.textContent = "";
     todoCountSpan.textContent = todos.length;
     
-    todos.forEach(todo => {
+    for (let i=0; i< todos.length; i++){
+        //creating li element
         var liEl = document.createElement("li");
-        liEl.textContent = todo;
+        liEl.textContent = todos[i];
         todoList.appendChild(liEl);
-    });
+
+        //creating btn element
+        var btnEl = document.createElement("button");
+        btnEl.textContent = "Compelete";
+        btnEl.setAttribute('data-index', i);
+        liEl.appendChild(btnEl);
+    }
     
 }
 
@@ -32,4 +39,18 @@ todoForm.addEventListener("submit", function(e){
             renderTodo();
         }
         else return;  
+})
+
+
+// Eventlistenr to remove a todo from the list.
+todoList.addEventListener("click", function(event){
+    var element = event.target;
+
+    if (element.matches("button") === true){
+        var index = element.parentElement.getAttribute("data-index");
+
+        todos.splice(index, 1);
+        renderTodo();
+    }
+
 })
