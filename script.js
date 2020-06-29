@@ -3,11 +3,12 @@ var todoForm = document.querySelector("#todo-form");
 var todoList = document.querySelector("#todo-list");
 var todoCountSpan = document.querySelector("#todo-count");
 
-renderTodo();
+
 
 // Array of todos
 var todos = ["Learn HTML", "Learn CSS", "Learn JavaScript"];
 
+renderTodo();
 // function to render the each item of todos array.
 function renderTodo(){
     todoList.textContent = "";
